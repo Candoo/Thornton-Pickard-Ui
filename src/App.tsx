@@ -3,7 +3,6 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { ErrorBoundary } from './components/ErrorBoundary'
-import { BrokenComponent } from './components/BrokenComponent'
 
 const BuggyComponent = ({ shouldThrow }: { shouldThrow: boolean }) => {
   if (shouldThrow) {
@@ -46,7 +45,6 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <BrokenComponent></BrokenComponent>
 
       <div className="card">
         <h2>Test Error Handling</h2>
