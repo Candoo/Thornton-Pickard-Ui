@@ -13,10 +13,10 @@
 
 ## Getting Started
 
-\`\`\`bash
+```bash
 npm install
 npm run dev
-\`\`\`
+```
 
 ## Scripts
 
