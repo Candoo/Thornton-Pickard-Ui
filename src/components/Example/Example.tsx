@@ -1,4 +1,4 @@
-import styles from './Example.module.css';
+import styles from './Example.module.scss';
 
 export const Example = () => {
   return (

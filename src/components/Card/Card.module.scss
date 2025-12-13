@@ -1,0 +1,19 @@
+.card {
+  padding: 2rem;
+
+  &-title {
+    font-size: 1.5rem;
+  }
+
+  &-content {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #1a1a1a;
+    border-radius: 8px;
+  }
+
+  &-content-title {
+    font-Size: 16px; 
+    margin-bottom: 10px;
+  }
+}

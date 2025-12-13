@@ -7,7 +7,7 @@
 - ⚡️ Vite for fast builds and HMR
 - ⚛️ React 19 with TypeScript
 - 🔄 Tanstack Query for data fetching
-- 🎨 CSS Modules + Tailwind CSS
+- 🎨 SASS Modules + Tailwind CSS
 - 🛡️ Error Boundaries for production error handling
 - 🔍 Dev error overlay for development
 - 💅 Prettier for code formatting
