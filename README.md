@@ -16,8 +16,8 @@ This is the user interface for the Thornton Pickard camera catalog, providing an
 
 This frontend works with:
 
-- **[thornton-pickard-api](https://github.com/Candoo/thornton-pickard-api)** - Backend API
-- **[Pickard-Index](https://github.com/Candoo/Pickard-Index)** - Full-stack deployment setup
+- **[Thornton-Pickard-Api](https://github.com/Candoo/Thornton-Pickard-Api)** - Backend API
+- **[Thornton-Pickard-Deployment](https://github.com/Candoo/Thornton-Pickard-Deployment)** - Full-stack deployment setup
 
 **⚡ Quick Start:** For the easiest setup of the entire application, use the [Pickard-Index deployment repository](https://github.com/Candoo/Pickard-Index).
 
@@ -39,7 +39,7 @@ This frontend works with:
 ### Prerequisites
 
 - Node.js 18+ and npm
-- The backend API running (see [thornton-pickard-api](https://github.com/Candoo/thornton-pickard-api))
+- The backend API running (see [thornton-pickard-api](https://github.com/Candoo/Thornton-Pickard-Api))
 
 ### Local Development
 
@@ -82,7 +82,7 @@ This frontend works with:
 
 To run the frontend with the full backend stack:
 
-1. Start the backend API (see [thornton-pickard-api README](https://github.com/Candoo/thornton-pickard-api))
+1. Start the backend API (see [thornton-pickard-api README](https://github.com/Candoo/Thornton-Pickard-Api))
 2. Ensure `VITE_API_URL` in your `.env` points to the API (default: `http://localhost:8080`)
 3. Start the frontend development server
 
@@ -106,13 +106,13 @@ Visit `http://localhost:3000`
 
 ### Using Docker Compose
 
-For the complete application stack, use the [Pickard-Index deployment repository](https://github.com/Candoo/Pickard-Index):
+For the complete application stack, use the [Pickard-Index deployment repository](https://github.com/Candoo/Thornton-Pickard-Deployment):
 
 ```bash
 # Clone the deployment repo
-git clone https://github.com/Candoo/Pickard-Index.git
+git clone https://github.com/Candoo/Thornton-Pickard-Deployment.git
 
-# Follow the setup instructions in Pickard-Index/README.md
+# Follow the setup instructions in Thornton-Pickard-Deployment/README.md
 ```
 
 ## 📜 Available Scripts
@@ -129,7 +129,7 @@ git clone https://github.com/Candoo/Pickard-Index.git
 ```
 my-modern-react-setup/
 ├── src/
-│   ├── components/          # Reusable React components
+│   ├── components/         # Reusable React components
 │   │   ├── ErrorBoundary.tsx
 │   │   ├── CameraCard.tsx
 │   │   ├── SearchBar.tsx
@@ -356,16 +356,10 @@ rm -rf node_modules/.vite
 
 MIT License - see LICENSE file for details.
 
-## 🆘 Support
-
-- **Issues:** [GitHub Issues](https://github.com/Candoo/my-modern-react-setup/issues)
-- **Backend API Issues:** [thornton-pickard-api Issues](https://github.com/Candoo/thornton-pickard-api/issues)
-- **Deployment Issues:** [Pickard-Index Issues](https://github.com/Candoo/Pickard-Index/issues)
-
 ## 🔗 Related Links
 
-- [Backend API Repository](https://github.com/Candoo/thornton-pickard-api)
-- [Deployment Repository](https://github.com/Candoo/Pickard-Index)
+- [Backend API Repository](https://github.com/Candoo/Thornton-Pickard-Api)
+- [Deployment Repository](https://github.com/Candoo/Thornton-Pickard-Deployment)
 - [React Documentation](https://react.dev/)
 - [Vite Documentation](https://vitejs.dev/)
 - [Tailwind CSS Documentation](https://tailwindcss.com/)
