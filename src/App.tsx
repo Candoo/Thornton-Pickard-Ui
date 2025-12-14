@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { ErrorBoundary } from './components/ErrorBoundary/ErrorBoundary'
 import { CardBlock, CardContent } from './components/Card'
-import { useApiStatus } from './hooks/useFetchStatus';
+import { useApiStatus } from './hooks/useFetchStatus'
 
 const BuggyComponent = ({ shouldThrow }: { shouldThrow: boolean }) => {
   if (shouldThrow) {
@@ -16,36 +16,36 @@ const BuggyComponent = ({ shouldThrow }: { shouldThrow: boolean }) => {
 function App() {
   const [count, setCount] = useState(0)
   const [throwRenderError, setThrowRenderError] = useState(false)
-  const [handledError, setHandledError] = useState<string | null>(null);
+  const [handledError, setHandledError] = useState<string | null>(null)
   const [errorKey, setErrorKey] = useState(0)
 
   // 1. HANDLED Runtime Error (Uses try...catch)
   const throwHandledError = () => {
     try {
       if (count % 2 === 0) {
-        throw new Error('💥 Handled: Thrown and caught by try...catch!');
+        throw new Error('💥 Handled: Thrown and caught by try...catch!')
       } else {
-        alert('Handled action successful!');
+        alert('Handled action successful!')
       }
     } catch (err) {
-      console.error('Handled Error Log:', err);
-      setHandledError(err instanceof Error ? err.message : 'An unknown error occurred.');
+      console.error('Handled Error Log:', err)
+      setHandledError(err instanceof Error ? err.message : 'An unknown error occurred.')
     }
   }
 
   // 2. UNHANDLED Runtime Error (Crashes the component / Shows Vite Overlay)
   // This function is outside try...catch and will crash the app.
   const throwUnhandledError = () => {
-    throw new Error('🛑 UNHANDLED: This throws an error that crashes the component tree!');
+    throw new Error('🛑 UNHANDLED: This throws an error that crashes the component tree!')
   }
 
   const resetComponent = () => {
     setThrowRenderError(false)
-    setHandledError(null);
+    setHandledError(null)
     setErrorKey(k => k + 1)
   }
 
-  const { data, isLoading, isError, error } = useApiStatus();
+  const { data, isLoading, isError, error } = useApiStatus()
 
   return (
     <>

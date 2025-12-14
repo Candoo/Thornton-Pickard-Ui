@@ -1,8 +1,8 @@
 import styles from './Card.module.scss'
 
 interface CardBlockProps {
-  title?: string;
-  children: React.ReactNode;
+  title?: string
+  children: React.ReactNode
 }
 
 export const CardBlock: React.FC<CardBlockProps> = ({ title, children }) => {
@@ -12,4 +12,4 @@ export const CardBlock: React.FC<CardBlockProps> = ({ title, children }) => {
       {children}
     </div>
   )
-};
+}
