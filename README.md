@@ -19,7 +19,7 @@ This frontend works with:
 - **[Thornton-Pickard-Api](https://github.com/Candoo/Thornton-Pickard-Api)** - Backend API
 - **[Thornton-Pickard-Deployment](https://github.com/Candoo/Thornton-Pickard-Deployment)** - Full-stack deployment setup
 
-**⚡ Quick Start:** For the easiest setup of the entire application, use the [Pickard-Index deployment repository](https://github.com/Candoo/Thornton-Pickard-Deployment).
+**⚡ Quick Start:** For the easiest setup of the entire application, use the [Thornton Pickard deployment repository](https://github.com/Candoo/Thornton-Pickard-Deployment).
 
 ## ✨ Features
 
