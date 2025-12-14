@@ -7,11 +7,11 @@
 - ⚡️ Vite for fast builds and HMR
 - ⚛️ React 19 with TypeScript
 - 🔄 Tanstack Query for data fetching
-- 🎨 SASS Modules + Tailwind CSS
+- 💅 Sass Modules + Tailwind CSS
 - 🛡️ Error Boundaries for production error handling
 - 🔍 Dev error overlay for development
-- 💅 Prettier for code formatting
-- 🐳 Docker support with nginx
+- ✨ Prettier for code formatting
+- 🐳 Docker support (Production Nginx + Development container)
 
 ## Getting Started
 
@@ -26,32 +26,51 @@ npm run dev
 
 Visit `http://localhost:5173`
 
-### Docker Deployment
+## Docker Deployment
 
-#### Using Docker
+This repository includes two Docker configurations: one for production (Nginx) and one for development (Vite).
+
+### 1. Production Build (Nginx)
+
+Uses `Dockerfile`. Builds the static assets and serves them via Nginx on port 80.
 ```bash
-# Build the image
-docker build -t my-react-app .
+# Build the production image
+docker build -f Dockerfile -t my-react-app-prod .
 
-# Run the container
-docker run -d -p 3000:80 --name my-react-app my-react-app
+# Run the container (Map host port 8080 to container port 80)
+docker run -d -p 8080:80 --name my-react-app-prod my-react-app-prod
 ```
 
-Visit `http://localhost:3000`
+Visit `http://localhost:8080`
 
-#### Using Docker Compose (Recommended)
+### 2. Development Build (Hot Reloading)
+
+Uses `Dockerfile.dev`. Installs dependencies and runs the Vite dev server on port 5173.
 ```bash
-# Start the application
-docker-compose up -d
+# Build the dev image
+docker build -f Dockerfile.dev -t my-react-app-dev .
 
-# Stop the application
-docker-compose down
+# Run the container (Map host port 5173 to container port 5173)
+# Note: For HMR to work, this requires volume mounting (see Docker Compose below)
+docker run -d -p 5173:5173 --name my-react-app-dev my-react-app-dev
+```
 
-# View logs
-docker-compose logs -f
+### Using Docker Compose (Orchestration)
 
-# Rebuild and restart
-docker-compose up -d --build
+**Note:** This repository does not contain a `docker-compose.yml` file. It is designed to be orchestrated by the parent repository (`Pickard-Index`).
+
+If you are running this as part of the full stack:
+
+1. Navigate to the `Pickard-Index` root directory.
+
+2. **Production Mode:**
+```bash
+docker compose up -d --build
+```
+
+3. **Development Mode:**
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 ```
 
 ## Scripts
@@ -62,22 +81,22 @@ docker-compose up -d --build
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
 
-## Docker Commands
+## Docker Commands (General)
 ```bash
 # Stop container
-docker stop my-react-app
+docker stop my-react-app-prod
 
 # Start container
-docker start my-react-app
+docker start my-react-app-prod
 
 # Remove container
-docker rm my-react-app
+docker rm my-react-app-prod
 
 # View logs
-docker logs my-react-app
+docker logs my-react-app-prod
 
 # Access container shell
-docker exec -it my-react-app sh
+docker exec -it my-react-app-prod sh
 ```
 
 ## Project Structure
@@ -87,41 +106,39 @@ docker exec -it my-react-app sh
 │   ├── components/
 │   │   └── ErrorBoundary.tsx
 │   ├── App.tsx
+│   ├── App.module.scss
 │   ├── main.tsx
-│   └── index.css
+│   └── index.scss
 ├── public/
-├── Dockerfile
-├── docker-compose.yml
+├── Dockerfile              # Production configuration
+├── Dockerfile.dev          # Development configuration
 ├── nginx.conf
 ├── .dockerignore
 ├── .gitignore
 ├── .prettierrc
+├── eslint.config.js
+├── tailwind.config.js
 ├── package.json
 ├── tsconfig.json
-└── vite.config.ts
+├── tsconfig.app.json
+├── tsconfig.node.json
+├── vite.config.ts
+└── index.html
 ```
 
 ## Error Handling
 
 ### Development
+
 - Syntax/compile errors show Vite's dev overlay
 - Runtime render errors caught by Error Boundary
 - Test error handling with the "Trigger Render Error" button
 
 ### Production
+
 - Error Boundary displays user-friendly error UI
 - Prevents full application crashes
 - Test with: `npm run build && npm run preview`
-
-## Deployment
-
-The application is containerized and ready for deployment to:
-- Docker Swarm
-- Kubernetes
-- AWS ECS
-- Azure Container Instances
-- Google Cloud Run
-- Any container platform
 
 ## Technology Stack
 
@@ -129,7 +146,7 @@ The application is containerized and ready for deployment to:
 - **Build Tool:** Vite
 - **Language:** TypeScript
 - **Data Fetching:** Tanstack Query
-- **Styling:** CSS Modules + Tailwind CSS
+- **Styling:** Sass Modules + Tailwind CSS
 - **Code Formatting:** Prettier
 - **Web Server:** Nginx (production)
 - **Container:** Docker
