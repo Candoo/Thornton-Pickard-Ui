@@ -1,40 +1,40 @@
-import { Component, type ErrorInfo, type ReactNode } from 'react'
-import { createPortal } from 'react-dom'
+import { Component, type ErrorInfo, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 interface Props {
-  children: ReactNode
-  fallback?: ReactNode
-  onReset?: () => void
+  children: ReactNode;
+  fallback?: ReactNode;
+  onReset?: () => void;
 }
 
 interface State {
-  hasError: boolean
-  error?: Error
-  errorInfo?: ErrorInfo
+  hasError: boolean;
+  error?: Error;
+  errorInfo?: ErrorInfo;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
-    super(props)
-    this.state = { hasError: false }
+    super(props);
+    this.state = { hasError: false };
   }
 
   static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error }
+    return { hasError: true, error };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo)
-    this.setState({ errorInfo })
+    console.error('Error caught by boundary:', error, errorInfo);
+    this.setState({ errorInfo });
   }
 
   resetError = () => {
     if (this.props.onReset) {
-      this.props.onReset()
+      this.props.onReset();
     }
 
-    this.setState({ hasError: false, error: undefined, errorInfo: undefined })
-  }
+    this.setState({ hasError: false, error: undefined, errorInfo: undefined });
+  };
 
   render() {
     if (this.state.hasError) {
@@ -46,6 +46,7 @@ export class ErrorBoundary extends Component<Props, State> {
             left: 0,
             right: 0,
             bottom: 0,
+            textAlign: 'left',
             backgroundColor: '#1a1a1a',
             zIndex: 9999,
             overflow: 'auto',
@@ -74,7 +75,13 @@ export class ErrorBoundary extends Component<Props, State> {
             ✕
           </button>
 
-          <div style={{ padding: '60px 40px', maxWidth: '900px', margin: '0 auto' }}>
+          <div
+            style={{
+              padding: '60px 40px',
+              maxWidth: '900px',
+              margin: '0 auto',
+            }}
+          >
             {/* Error type badge */}
             <div
               style={{
@@ -158,23 +165,23 @@ export class ErrorBoundary extends Component<Props, State> {
                 transition: 'all 0.2s',
               }}
               onMouseOver={(e) => {
-                e.currentTarget.style.background = '#535bf2'
-                e.currentTarget.style.transform = 'translateY(-1px)'
+                e.currentTarget.style.background = '#535bf2';
+                e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseOut={(e) => {
-                e.currentTarget.style.background = '#646cff'
-                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.background = '#646cff';
+                e.currentTarget.style.transform = 'translateY(0)';
               }}
             >
               Reload Page
             </button>
           </div>
         </div>
-      )
+      );
 
-      return createPortal(overlay, document.body)
+      return createPortal(overlay, document.body);
     }
 
-    return this.props.children
+    return this.props.children;
   }
 }
